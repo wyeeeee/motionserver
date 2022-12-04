@@ -308,12 +308,12 @@ class AnyDevice(gatt.Device):
 arg_parser = ArgumentParser(description="GATT Connect Demo")
 arg_parser.add_argument('mac_address', help="MAC address of device to connect")
 arg_parser.add_argument('host_ip', help="HOST ip address of device to connect", nargs='?', default=None)
-args = arg_parser.parse_args()
+#args = arg_parser.parse_args()
 
 
 
 
-host = args.host_ip
+host = None
 port = 6666
 sock = None
 print("host ip: ",host)
@@ -330,7 +330,7 @@ if host is not None:
 print("Connecting bluetooth ...")
 
 manager = gatt.DeviceManager(adapter_name='hci0')
-device = AnyDevice(manager=manager, mac_address=args.mac_address)
+device = AnyDevice(manager=manager, mac_address="7B:1D:DE:EA:17:49")
 device.sock_pc = sock
 if host is None:
     device.parse_imu_flage = True
